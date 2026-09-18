@@ -1,13 +1,19 @@
 name: HACS validation
 
+# Note: no pull_request trigger, deliberately. The HACS action validates the repository via
+# GitHub's API rather than the workspace, so for a PR from a fork it validates the fork — which
+# has no releases and no committed bundle, and fails while the contributor's code is fine.
+# Code-side validation is covered by build.yml, which does run on PRs.
 on:
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
   schedule:
     - cron: "0 3 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   hacs:
@@ -15,6 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The bundle is gitignored, so it has to exist in the workspace before validation or HACS
+      # reports the plugin's repository structure as non-compliant.
+      - name: Build
+        run: npm run rollup
+
+      - name: Compress dist
+        run: gzip -kf dist/section-highlighter.js
 
       - name: HACS validation
         uses: hacs/action@main
