@@ -4,6 +4,8 @@
 [![release][release-badge]][releases]
 [![license][license-badge]](LICENSE)
 
+[![Open your Home Assistant instance and open this repository in HACS.][my-hacs-badge]][my-hacs-url]
+
 > **Alpha.** `0.1.0-alpha1` is the first public build. It has been exercised by hand against
 > Home Assistant 2026.9.2 and nowhere else. It is published as the current release so HACS
 > installs it normally — no beta setting needed — but expect rough edges, and please
@@ -51,7 +53,12 @@ it was.
 
 ### HACS (recommended)
 
-This is not in the HACS default list, so add it as a custom repository:
+This is not in the HACS default list, so add it as a custom repository. The quickest way is this
+button, which opens the repository in your own HACS; then skip to step 6:
+
+[![Open your Home Assistant instance and open this repository in HACS.][my-hacs-badge]][my-hacs-url]
+
+Or add it by hand:
 
 1. Open **HACS** in the Home Assistant sidebar
 2. Click the three-dot menu (top right) → **Custom repositories**
@@ -132,5 +139,7 @@ documented in [docs/design.md](docs/design.md).
 [hacs-url]: https://github.com/hacs/integration
 [release-badge]: https://img.shields.io/github/v/release/jpettitt/section-highlighter?include_prereleases
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[my-hacs-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
+[my-hacs-url]: https://my.home-assistant.io/redirect/hacs_repository/?owner=jpettitt&repository=section-highlighter&category=plugin
 [releases]: https://github.com/jpettitt/section-highlighter/releases
 [issues]: https://github.com/jpettitt/section-highlighter/issues
