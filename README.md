@@ -5,8 +5,8 @@
 [![license][license-badge]](LICENSE)
 
 > **Alpha.** `0.1.0-alpha1` is the first public build. It has been exercised by hand against
-> Home Assistant 2026.9.2, but it has not been run anywhere else yet. To install it through HACS
-> you must turn on **Show beta versions** — see below. Expect rough edges, and please
+> Home Assistant 2026.9.2 and nowhere else. It is published as the current release so HACS
+> installs it normally — no beta setting needed — but expect rough edges, and please
 > [open an issue][issues] when you find one.
 
 A Home Assistant custom section that changes its **background, border and glow based on the state
@@ -58,8 +58,7 @@ This is not in the HACS default list, so add it as a custom repository:
 3. Paste `https://github.com/jpettitt/section-highlighter` into **Repository**
 4. Choose **Dashboard** as the type, then click **Add**
 5. Search HACS for **Section Highlighter** and open it
-6. While this is an alpha: three-dot menu → **Show beta versions**, then pick `0.1.0-alpha1`
-7. Click **Download**, then **reload your browser** (Ctrl-Shift-R / Cmd-Shift-R)
+6. Click **Download**, then **reload your browser** (Ctrl-Shift-R / Cmd-Shift-R)
 
 HACS adds the dashboard resource for you. If your dashboard is in YAML mode, add it yourself:
 
