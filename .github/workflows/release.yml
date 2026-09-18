@@ -8,6 +8,10 @@ jobs:
   release:
     name: Prepare release
     runs-on: ubuntu-latest
+    # New repositories default to a read-only GITHUB_TOKEN, which cannot attach release assets.
+    # Granting it here keeps the workflow working regardless of the repo's default setting.
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v5
 
