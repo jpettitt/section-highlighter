@@ -1,0 +1,21 @@
+# Local Home Assistant testbed for section-highlighter development.
+#
+# Mounts ./dist read-only into HA's www directory, so each `npm run build` is immediately
+# available to the running HA — hard-refresh the browser (Cmd-Shift-R) and you are testing the
+# new bundle. No file copying.
+#
+# First-time setup: see CONTRIBUTING.md → "Local HA testbed (Docker)".
+
+services:
+  ha:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: sh-ha
+    restart: unless-stopped
+    ports:
+      # Override when 8123 is already taken by another HA instance:
+      #   HA_PORT=8125 npm run ha:up
+      - "${HA_PORT:-8123}:8123"
+    volumes:
+      - ./.dev/ha-config:/config:Z
+      - ./dist:/config/www/community/section-highlighter:ro,Z
+      - /etc/localtime:/etc/localtime:ro

@@ -1,0 +1,7 @@
+node_modules/
+dist/*.js
+dist/*.js.gz
+coverage/
+.dev/ha-config/
+.DS_Store
+*.log

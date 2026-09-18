@@ -1,0 +1,13 @@
+# Minimal HA config for the section-highlighter local testbed.
+# Copied to .dev/ha-config/configuration.yaml on first run by `npm run ha:init`.
+# The .dev/ha-config/ directory is gitignored so HA's database and secrets stay out of the repo.
+
+default_config:
+
+# The section is auto-loaded as a Lovelace resource via the pre-seeded
+# .storage/lovelace_resources file (copied by `npm run ha:init`). This matches how HACS loads
+# dashboard plugins and works with HA's scoped custom element registry.
+
+# The demo platform populates fake entities (lights, sensors, binary sensors) so there is
+# something to write highlight rules against.
+demo:

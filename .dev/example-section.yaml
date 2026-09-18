@@ -1,0 +1,49 @@
+# Paste into a Sections dashboard via the raw configuration editor to exercise the section
+# against the testbed's demo entities. Covers: numeric_state, state, a logical condition,
+# fall-through to a no-condition rule, and a section that also has a native static background.
+type: custom:section-highlighter
+column_span: 2
+background:
+  color: grey
+  opacity: 10
+rules:
+  - conditions:
+      - condition: numeric_state
+        entity: sensor.outside_temperature
+        above: 20
+    background:
+      color: red
+      opacity: 25
+    border: true
+    glow: true
+  - conditions:
+      - condition: state
+        entity: light.bed_light
+        state: "on"
+    background:
+      color: amber
+    border:
+      color: orange
+      width: 3
+  - conditions:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: binary_sensor.basement_floor_wet
+            state: "on"
+          - condition: state
+            entity: binary_sensor.movement_backyard
+            state: "on"
+    border:
+      color: blue
+  - conditions: []
+    background:
+      color: green
+      opacity: 10
+cards:
+  - type: tile
+    entity: light.bed_light
+  - type: tile
+    entity: sensor.outside_temperature
+  - type: tile
+    entity: binary_sensor.basement_floor_wet

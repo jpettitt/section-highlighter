@@ -1,0 +1,53 @@
+{
+  "name": "section-highlighter",
+  "version": "0.1.0-alpha1",
+  "type": "module",
+  "description": "State-driven background, border and glow highlighting for Home Assistant dashboard sections",
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "hass",
+    "lovelace",
+    "custom-cards",
+    "sections"
+  ],
+  "module": "section-highlighter.js",
+  "repository": "git@github.com:jpettitt/section-highlighter.git",
+  "author": "John Pettitt",
+  "license": "MIT",
+  "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "lit": "^3.3.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@vitest/coverage-v8": "^4.1.11",
+    "eslint": "^10.6.0",
+    "happy-dom": "^20.10.6",
+    "prettier": "^3.9.1",
+    "rollup": "^4.62.2",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-typescript2": "^0.37.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.62.0",
+    "vitest": "^4.1.11"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.6"
+  },
+  "scripts": {
+    "start": "rollup -c rollup.config.dev.js --watch",
+    "build": "npm run lint && npm run rollup",
+    "lint": "eslint src/*.ts",
+    "rollup": "rollup -c",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "ha:init": "mkdir -p .dev/ha-config/.storage && cp -n .dev/configuration.yaml.example .dev/ha-config/configuration.yaml || true && cp -n .dev/lovelace_resources.json .dev/ha-config/.storage/lovelace_resources || true",
+    "ha:up": "npm run ha:init && docker compose up -d && echo 'HA starting at http://localhost:8123 (first boot may take a minute)'",
+    "ha:down": "docker compose down",
+    "ha:logs": "docker compose logs -f ha",
+    "ha:reset": "docker compose down && rm -rf .dev/ha-config && echo 'HA config wiped. Run npm run ha:up for a fresh instance.'"
+  }
+}
