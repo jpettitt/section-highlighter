@@ -1,5 +1,39 @@
-import { describe, expect, it } from 'vitest';
-import { replaceSection } from '../src/editor-dialog';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { html, render } from 'lit';
+import { replaceSection, type SectionHighlighterDialog } from '../src/editor-dialog';
+
+describe('section-highlighter-dialog', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    document.body.innerHTML = '';
+  });
+
+  // The section re-renders on every hass update, and Lit re-assigns object bindings on every
+  // render even when the object is unchanged. Unsaved rules must survive that.
+  it('keeps unsaved rules when the owning section re-renders', async () => {
+    vi.useFakeTimers();
+    const params = {
+      config: { type: 'custom:section-highlighter' },
+      hass: {},
+      lovelace: {},
+      viewIndex: 0,
+      sectionIndex: 0,
+    } as any;
+    const host = document.createElement('div');
+    document.body.append(host);
+    const template = () =>
+      html`<section-highlighter-dialog .params=${params}></section-highlighter-dialog>`;
+
+    render(template(), host);
+    const dialog = host.querySelector('section-highlighter-dialog') as SectionHighlighterDialog &
+      Record<string, any>;
+    dialog._addRule();
+    expect(dialog._rules).toHaveLength(1);
+
+    render(template(), host);
+    expect(dialog._rules).toHaveLength(1);
+  });
+});
 
 describe('replaceSection', () => {
   const config = {

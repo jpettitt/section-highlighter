@@ -58,7 +58,9 @@ export class SectionHighlighterDialog extends LitElement {
    */
   @property({ attribute: false })
   public set params(params: HighlightEditorParams | undefined) {
-    if (!params) return;
+    // Lit re-assigns object bindings on every render of the section, which re-renders on every
+    // hass update; re-opening then would wipe unsaved rules.
+    if (!params || params === this._params) return;
     void this._open_(params);
   }
 
