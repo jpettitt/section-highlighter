@@ -5,6 +5,13 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.0-alpha2] - 2026-09-18
+
+### Fixed
+
+- The rule editor no longer discards unsaved changes. Any entity state change reset it to the
+  saved config, so on a busy system a rule added with **Add rule** vanished within a second.
+
 ## [0.1.0-alpha1] - 2026-09-17
 
 ### Added

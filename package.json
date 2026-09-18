@@ -1,6 +1,6 @@
 {
   "name": "section-highlighter",
-  "version": "0.1.0-alpha1",
+  "version": "0.1.0-alpha2",
   "type": "module",
   "description": "State-driven background, border and glow highlighting for Home Assistant dashboard sections",
   "keywords": [

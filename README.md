@@ -6,8 +6,8 @@
 
 [![Open your Home Assistant instance and open this repository in HACS.][my-hacs-badge]][my-hacs-url]
 
-> **Alpha.** `0.1.0-alpha1` is the first public build. It has been exercised by hand against
-> Home Assistant 2026.9.2 and nowhere else. It is published as the current release so HACS
+> **Alpha.** The `0.1.0-alpha` builds are early public releases, exercised by hand against
+> Home Assistant 2026.9.2 and 2026.9.3 only. Each is published as the current release so HACS
 > installs it normally — no beta setting needed — but expect rough edges, and please
 > [open an issue][issues] when you find one.
 
