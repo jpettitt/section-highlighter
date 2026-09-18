@@ -21,6 +21,13 @@ Working notes. Shipped items stay in place as a record; open ideas are unchecked
       `hacs.json` currently claims 2025.1.0, which is a guess.
 - [ ] Screenshot / GIF for the README
 - [ ] Remove the alpha callout from README.md when 0.1.0 final ships
+- [ ] HACS validation goes green on its own at 0.1.0 final. HACS resolves a plugin through
+      GitHub's API and wants a committed bundle or a published release; it does not count
+      pre-releases, and our bundle is gitignored. Re-check the workflow after the first full
+      release rather than working around it.
+- [ ] Verify an actual HACS install end to end. This needs HACS itself in the testbed, whose
+      setup requires a GitHub OAuth device authorisation, so it cannot be scripted here. Until
+      someone does it, the install steps in README.md are unverified.
 - [ ] Cover the setup card and the rule editor's config surgery with unit tests. The three UI
       defects found in testing (grid overflow, unreachable button, unslotted footer) were all
       invisible to scripted checks, but `replaceSection` round-trips and the "which keys survive a
